@@ -1,10 +1,13 @@
+/* Copyright 2018 JIRo */
+
 #include <ros/ros.h>
 #include <image_transport/image_transport.h>
-#include <opencv2/highgui/highgui.hpp>
 #include <cv_bridge/cv_bridge.h>
 
-void imageCallback(const sensor_msgs::ImageConstPtr& msg){
-  try {
+#include <opencv2/highgui/highgui.hpp>
+
+void imageCallback(const sensor_msgs::ImageConstPtr& msg) {
+  try  {
     cv::namedWindow("view", cv::WINDOW_NORMAL);
     cv::imshow("view", cv_bridge::toCvShare(msg, "bgr8")->image);
     cv::waitKey(30);
@@ -13,7 +16,7 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg){
   }
 }
 
-int main(int argc, char **argv){
+int main(int argc, char **argv) {
   ros::init(argc, argv, "image_listener");
   ros::NodeHandle nh;
   image_transport::ImageTransport it(nh);
