@@ -7,6 +7,7 @@ find_package(catkin REQUIRED COMPONENTS
     cv_bridge
     image_transport
     )
+catkin_package()
 
 find_package(OpenCV REQUIRED)
 include_directories(${catkin_INCLUDE_DIRS})
